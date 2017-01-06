@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <dtBar></dtBar>
+    <div class="content">
+    	
+    </div>
   </div>
 </template>
 
@@ -17,5 +20,8 @@ export default {
 </script>
 
 <style>
-
+	.content{
+		height: 5000px;
+		width: 100%;
+	}
 </style>
