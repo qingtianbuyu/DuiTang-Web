@@ -2,10 +2,10 @@
   <div class="header navbar-fixed-top">
     <div class="container">
       <div class="row">
-      
-        <a href="#" class="dt-logo col-lg-1 col-md-1 col-sm-1">堆糖</a>
+
+        <a href="#" class="dt-logo col-xs-1 col-lg-1 col-md-1 col-sm-1">堆糖</a>
     
-        <div class="categoryContainer col-lg-1 col-md-1">
+        <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
             <div class="borderContainer">
               <div class="category-btn">
                 分类
@@ -13,7 +13,7 @@
             </div>
         </div>
           
-        <div class="col-lg-4 col-md-4 col-sm-4 search-container">
+        <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 search-container">
           <div class="input-group">
             <input type="text" class="form-control">
             <span class="input-group-btn">
@@ -22,7 +22,7 @@
           </div>
         </div>
       
-        <div class="fr col-lg-6 col-md-6 col-sm-6 clear-padding">
+        <div class="fr col-xs-6 col-lg-6 col-md-6 col-sm-6 clear-padding">
             <ul class="fr">
               <li class="line"></li>
                 <li>
@@ -62,10 +62,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  .w {
-    width: 1200px;
-  }
-
   .clear-padding{
     padding: 0;
   }
@@ -101,7 +97,6 @@
 
   .dt-logo {
     float: left;
-    width: 80px;
     height: 64px;
     line-height: 64px;
     background: url('../assets/dt-logo.png') 0 12px no-repeat;
@@ -193,5 +188,6 @@
   .search-container{
     padding: 15px 0 0 15px;
   }
+
 
 </style>
