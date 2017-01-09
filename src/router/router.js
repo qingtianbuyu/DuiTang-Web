@@ -19,6 +19,9 @@ export default new VueRouter({
       components: {
         default: Foo,
       }
+    },{
+      path:"/", 
+      redirect:""
     }
   ]
 })

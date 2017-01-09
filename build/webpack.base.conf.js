@@ -1,3 +1,4 @@
+
 var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
@@ -12,7 +13,7 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/app.js'
   },
   output: {
     path: config.build.assetsRoot,

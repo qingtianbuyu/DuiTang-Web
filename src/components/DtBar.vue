@@ -1,59 +1,73 @@
 <template>
-  <div class="header">
-    <div>
-    <div class="w container">
-      <a href="#" class="dt-logo">堆糖</a>
-  
-      <div class="categoryContainer">
-          <div class="borderContainer">
-            <div class="category-btn">
-              分类
-            </div>
-          </div>
-      </div>
+  <div class="header navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+      
+        <a href="#" class="dt-logo col-lg-1 col-md-1 col-sm-1">堆糖</a>
     
-      <div class="fl input-search-container">
-      <div class="input-search-container-border">
-        <input type="text" placeholder="搜索感兴趣的内容" class="inputer"></input>
-        <button class="btn-search">搜索</button>
+        <div class="categoryContainer col-lg-1 col-md-1">
+            <div class="borderContainer">
+              <div class="category-btn">
+                分类
+              </div>
+            </div>
+        </div>
+          
+        <div class="col-lg-4 col-md-4 col-sm-4 search-container">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">搜索</button>
+            </span>
+          </div>
+        </div>
+      
+        <div class="fr col-lg-6 col-md-6 col-sm-6 clear-padding">
+            <ul class="fr">
+              <li class="line"></li>
+                <li>
+                  <a href="#">堆糖生活家</a>
+                  <span class="btn-common sp-new">new</span>
+                </li>
+                <li class="line"></li>
+                <li>
+                  <a href="#" class="btn-common register">注册</a>
+                </li>
+                <li class="line"></li>
+                <li>
+                  <a href="#">登录</a>
+                </li>
+                <li class="line"></li>
+                <li>
+                  <span class="phone"></span>
+                  <a href="#">手机版</a>
+                  <span class="phone"></span>
+              </li>
+            </ul>
         </div>
       </div>
-      <div class="fr">
-          <ul>
-          <li class="line"></li>
-            <li>
-              <a href="#">堆糖生活家</a>
-              <span class="btn-common sp-new">new</span>
-            </li>
-            <li class="line"></li>
-            <li>
-              <a href="#" class="btn-common register">注册</a>
-            </li>
-            <li class="line"></li>
-            <li>
-              <a href="#">登录</a>
-            </li>
-            <li class="line"></li>
-            <li>
-              <em class="phone"></em>
-              <a href="#">手机版</a>
-            </li>
-          </ul>
-      </div>
     </div>
-  </div>
+
   <div class="line-horizontal"></div>
+
+  </div>
   </div>
 </template>
 
+
 <script>
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
   .w {
-    width: 1215px;
+    width: 1200px;
+  }
+
+  .clear-padding{
+    padding: 0;
   }
 
   .line-horizontal{
@@ -74,7 +88,7 @@
     font: 13px "宋体";
   }
 
-  div.container {
+  div.nav-container {
     margin: 0 auto;
     height: 64px; 
   }
@@ -98,7 +112,6 @@
     float: left;
     margin: 17px 0 0 22px;
     height: 25px;
-    width: 70px;
     border: 1px solid rgb(225,225,225);
   }
   .category-btn{
@@ -109,41 +122,16 @@
     line-height: 26px;
   }
 
-  .input-search-container{
-    border: 1px solid #c3c3c3;
-    height: 30px;
-    width: 364px;
-    margin: 16px 0 0 50px;
-  }
-
-  .inputer {
-    padding: 0 0 0 5px;
-    width: 320px;
-    border: 0;
-    float: left;
-    height: 28px;
-  }
-
   .btn-search{
     background-color: transparent;
     border: 0;
     height: 34px;
   }
-
-  .rightContainer{
-    float: left;
-    background-color: red;
-    width: 640px;
-    line-height: 64px;
-    height: 64px;
-  }
-  
-  .rightContainer div {
-    display: inline;
-  }
   
   .fl {
     float: left;
+    height: 64px;
+    line-height: 64px;
   }
 
   .fr {
@@ -165,6 +153,12 @@
     padding: 0  24px 0 24px;
   }
 
+  .fr .lastt{
+    float: left;
+    padding: 0  0px 0 0px;
+  }
+
+
   .btn-common {
     background-color: rgb(255,62,108);
     border-radius: 3px;
@@ -180,12 +174,24 @@
     padding: 7px 14px;
     font-size: 13px;
   }
+
+  .test{
+    display:inline-block;
+    background-color: green;
+    position: relative;
+  }
   
   .phone{
-    padding: 2px 15px 40px 0;
+    position: relative;
     background: url('../assets/dt-phone.png') no-repeat;
-    width: 15px;
-    height: 64px;
+    width: 11px;
+    height: 20px;
+    display: inline-block;
+    margin: 0 0 -5px 0;
+  }
+
+  .search-container{
+    padding: 15px 0 0 15px;
   }
 
 </style>

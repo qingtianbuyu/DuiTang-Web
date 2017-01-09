@@ -1,19 +1,18 @@
 <template>
   <div id="app">
     <dtBar></dtBar>
-    <div class="content">
-    	
-    </div>
+    
   </div>
 </template>
 
 <script>
 
 import DtBar from './components/DtBar'
+
  
 export default {
   name: 'app',
-  components: {
+  components: { 
     DtBar
   }
 }
@@ -21,7 +20,22 @@ export default {
 
 <style>
 	.content{
-		height: 5000px;
+		height: 500px;
 		width: 100%;
 	}
+
+  .ct{
+    height: 500px;
+    width: 100%;
+    background-color: blue;
+  }
+  .c {
+    height: 500px;
+    width: 100%;
+  }
+  .cc {
+    
+    background-color: blue;
+  }
+  
 </style>
