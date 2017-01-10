@@ -3,8 +3,8 @@
     <dtBar></dtBar>
     <section class="container top">
 
-        <div class="banner-container col-xs-7 col-lg-7 col-md-7 col-sm-7">
-            <div class="banner">
+        <div class="banner-container dt-clear-padding">
+            <div>
               <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     
                   <ol class="carousel-indicators">
@@ -31,7 +31,7 @@
             </div>
         </div> 
 
-         <div class="col-xs-5 col-lg-5 col-md-5 col-sm-5 banner-desc">
+         <div class="hot-container cc">
             <div class="desc"></div>
         </div> 
 
@@ -70,27 +70,24 @@ export default {
 
 </script>
 
-<style>
-  
+<style scoped>
+
+  body {
+    background-color: rgb(241,242,243);
+  }
+
   .w {
     width: 1200px;
   }
 
-
-	.content{
-		height: 500px;
-		width: 100%;
-	}
-
-  .ct{
-    height: 500px;
-    width: 100%;
-    background-color: blue;
+  .dt-clear-padding {
+    padding: 0;
   }
-  .c {
-    height: 500px;
-    width: 100%;
+
+  .bgc {
+    background-color: rgb(241,242, 243);
   }
+  
   .cc {
 
     background-color: blue;
@@ -100,15 +97,37 @@ export default {
     margin-top: 105px;
 
   }
-
-  .banner-container{
-    height: 445px;
-    
-  }
-
-  .banner-desc{
-    height: 445px;
-  }
   
+  @media screen and ( min-width: 1261px) {
+    .banner-container {
+      width: 712px;
+      height: 445px;
+      float: left;
+      display: inline;
+    }
+
+    .hot-container {
+      width: 428px;
+      height: 445px; 
+      float: left;
+    }
+  }
+
+  
+  @media screen and ( max-width: 1260px) {
+    .banner-container {
+      width: 468px;
+      height: 293px;
+      display: inline;
+      float: left;
+    }
+
+    .hot-container {
+      width: 468px;
+      height: 293px;
+      display: inline; 
+      float: left;
+    }
+  }  
   
 </style>
