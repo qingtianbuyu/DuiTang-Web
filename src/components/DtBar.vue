@@ -62,10 +62,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  .clear-padding{
-    padding: 0;
-  }
-
   .line-horizontal{
     width: 100%;
     height: 1px;
@@ -168,12 +164,6 @@
   .register{
     padding: 7px 14px;
     font-size: 13px;
-  }
-
-  .test{
-    display:inline-block;
-    background-color: green;
-    position: relative;
   }
   
   .phone{
