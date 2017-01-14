@@ -64,48 +64,152 @@
         </div> 
     </div>
 
-    <div class="line"></div>
+    <div class="common-line-container">
+      <div class="common-line"></div>
+    </div>
+
+    <div class="dt-title">
+      <h3>专辑精选</h3>
+      <button>更多专辑 > </button>
+    </div> 
 
     <div class="w album-container">
       <div class="album">
+        <div class="album-section">
+          <img src="./assets/album.jpeg" class="album-img">
+          <div class="desc-container">
+            <h3 class="dt-clear-padding">胶卷里的十二月</h3>
+            <h2>21张图拍呢 * 1203人收藏</h2>
+            <h2>by qingtianbuyu</h2>
+          </div>
+        </div>
         <section class="album-section">
           <img src="./assets/album.jpeg" class="album-img">
-          <h3>胶卷里的十二月</h3>
-          <h3>21张图拍呢 * 1203人收藏</h3>
-          <h3>by qingtianbuyu</h3>
+          <div class="desc-container">
+            <h3>胶卷里的十二月</h3>
+            <h2>21张图拍呢 * 1203人收藏</h2>
+            <h2>by qingtianbuyu</h2>          
+          </div>
+
         </section>
         <section class="album-section">
           <img src="./assets/album.jpeg" class="album-img">
-          <h3>胶卷里的十二月</h3>
-          <h3>21张图拍呢 * 1203人收藏</h3>
-          <h3>by qingtianbuyu</h3>
+          <div class="desc-container">
+            <h3>胶卷里的十二月</h3>
+            <h2>21张图拍呢 * 1203人收藏</h2>
+            <h2>by qingtianbuyu</h2>
+          </div>
         </section>
         <section class="album-section">
           <img src="./assets/album.jpeg" class="album-img">
-          <h3>胶卷里的十二月</h3>
-          <h3>21张图拍呢 * 1203人收藏</h3>
-          <h3>by qingtianbuyu</h3>
-        </section>
-        <section class="album-section">
-          <img src="./assets/album.jpeg" class="album-img">
-          <h3>胶卷里的十二月</h3>
-          <h3>21张图拍呢 * 1203人收藏</h3>
-          <h3>by qingtianbuyu</h3>
+          <div class="desc-container">
+            <h3>胶卷里的十二月</h3>
+            <h2>21张图拍呢 * 1203人收藏</h2>
+            <h2>by qingtianbuyu</h2>          
+          </div>
+
         </section>
 
       </div>
     </div>
+    
+    <div class="common-line-container">
+      <div class="common-line"></div>
+    </div>
 
+    <div class="dt-title">
+      <h3>单品推荐</h3>
+      <button>更多专辑 > </button>
+    </div> 
+
+    <div class="w album-container">
+      <div class="album">
+        <section class="album-section">
+          <img src="./assets/beauty-leg.jpeg" class="album-img">
+          <div class="desc-container">
+              <h3 class="dt-clear-padding">胶卷里的十二月</h3>
+              <h2>21张图拍呢 * 1203人收藏</h2>
+              <h2>by qingtianbuyu</h2>  
+          </div>
+        </section>
+        <section class="album-section">
+          <img src="./assets/beauty-leg.jpeg" class="album-img">
+          <div class="desc-container">
+              <h3>胶卷里的十二月</h3>
+              <h2>21张图拍呢 * 1203人收藏</h2>
+              <h2>by qingtianbuyu</h2>
+          </div>
+        </section>
+        <section class="album-section">
+          <img src="./assets/beauty-leg.jpeg" class="album-img">
+          <div class="desc-container">
+              <h3>胶卷里的十二月</h3>
+              <h2>21张图拍呢 * 1203人收藏</h2>
+              <h2>by qingtianbuyu</h2>
+          </div>
+        </section>
+        <section class="album-section">
+          <img src="./assets/beauty-leg.jpeg" class="album-img">
+          <div class="desc-container">
+              <h3>胶卷里的十二月</h3>
+              <h2>21张图拍呢 * 1203人收藏</h2>
+              <h2>by qingtianbuyu</h2>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <div class="common-line-container">
+      <div class="common-line"></div>
+    </div>
+    
+    <div class="dt-title">
+      <h3>达人推荐</h3>
+      <button>更多专辑 > </button>
+    </div> 
+
+    <div class="recommend-container of">
+      <div v-for="item in userList.items" class="user-list-item-container common-border">
+          <div class="img">
+            <a href="#">
+              <img src="./assets/user_background_image.jpeg" alt="">  
+            </a>
+            <div class="avatar-container">
+              <img src="./assets/avatar.jpeg" alt="" class="avatar">
+              <img src="./assets/badge-v.png" alt="" class="badge-vip">
+            </div>
+          </div>
+          <div class="recommend-desc-container">
+            <a href="#">{{item.username}}</a>
+            <p>
+              <span class="daren-star"> </span>
+              <span class="daren-count-total">3612</span>
+            </p>
+            <p class="daren-expertise">
+              擅长领域：<b>{{ item.tags.join(',')}}</b>
+            </p>
+          </div>
+      </div >
+    </div>
 
     
+    <div class="common-line-container">
+      <div class="common-line"></div>
+    </div>
+    
+
+    <div class="dt-title">
+      <h3>大家都在逛</h3>
+    </div> 
 
   </div>
 </template>
 
 <script>
-
+import Vue from 'vue'
+import { mapGetters, mapActions } from 'vuex'
 import DtBar from './components/DtBar'
-
+import * as types from './store/modules/user/mutation-types'
  
 export default {
   name: 'app',
@@ -124,8 +228,21 @@ export default {
           {id: 5, name:"穿搭", url:'#'},
           {id: 6, name:"家居", url:'#'},
           {id: 7, name:"原创", url:'#'}
-        ]
+        ],
+
+        userList: []
       }
+  },
+
+  beforeMount(){
+    this.$store.dispatch(types.LIST_USER_BY_TOP).then(() => {
+      this.userList = this.$store.state.userList
+      //终于取到值了
+      this.userList.items.forEach(function(value, index){
+         console.log(value.username)  
+      });
+      
+    })
   },
 
   mounted:function(){
@@ -144,7 +261,11 @@ export default {
 </script>
 
 <style scoped>
-
+  .test {
+    width: 100px;
+    background-color: red;
+    height: 500px;
+  }
   .w {
     width: 1200px;
   }
@@ -164,6 +285,15 @@ export default {
   .cc {
     background-color: blue;
   }
+
+  .common-border {
+    border: 1px solid #ddd;
+  }
+
+  .of {
+    overflow: hidden;
+  }
+
 
   ul {
     list-style: none;
@@ -212,7 +342,19 @@ export default {
     width: 100%;
     background-color: #eee;
     height: 1px;
-    margin-top: 15px;
+    margin: 15px;
+  }
+
+  .common-line {
+    width: 1200px;
+    background-color: #eee;
+    height: 1px;
+    margin: 15px 0;
+  }
+
+  .common-line-container{
+    margin: 0 auto;
+    width: 1200px;
   }
 
   .line-horizantal {
@@ -248,18 +390,126 @@ export default {
   .album-img{
     width: 224px;
     height: 224px;
+    overflow: hidden;
   }
 
   .album-container{
     margin: 0 auto;
-    padding: 40px 0 0 0;
+    padding: 0;
+    margin-bottom: 40px;
   }
 
   .album-section {
     width: 224px;
-    height: 60px;
     display: inline-block;
-    margin-right: 72px;
+    margin-right: 40px;
+    border: 1px solid #ddd;
+  }
+
+  .album-section h3 {
+    font-size: 13px;
+    margin: 10px 0 15px 0;
+  }
+
+  .album-section h2 {
+    color: #999;
+    font-size: 12px;
+    margin:  0 0 5px 0;
+  }
+
+  .desc-container {
+    padding: 0px 0 10px 10px;
+  }
+
+  .dt-title {
+    margin: 0 auto;
+    width: 1200px;
+  }
+
+  /*此处设置高度后，height自动变为0*/
+  .dt-title h3{
+    font: 20px solid red;
+    line-height: 27px;
+    padding: 30px 0;
+    margin: 0;
+    display: inline-block;
+  }
+
+  .dt-title button{
+    float: right;
+    float: right;
+    margin-top: 30px;
+    border: 0;
+    color: white;
+    background-color: rgb(34,180,246);
+    border-radius: 3px;
+  }
+
+  .recommend-container {
+    margin: 0 auto;
+    padding: 0;
+    width: 1222px;
+    margin-bottom: 40px;
+  }
+
+  .user-list-item-container {
+    width: 224px;
+    height: 254px;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .recommend-desc-container {
+    width: 222px;
+    height: 140px;
+    background-color: #fff;
+  }
+
+  .recommend-desc-container a {
+    height: 71px;
+    text-align: center;
+    display: block;
+    padding-top: 51px;
+    color: #333 !important;
+
+  }
+  .recommend-desc-container p {
+    margin: 4px auto 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .daren-star {
+    background: url('./assets/sprite.png') no-repeat;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-position: -4px -50px;
+  }
+
+  .daren-expertise {
+    color: #999;
+  }
+  .daren-expertise b {
+    color: #666;
+  }
+
+  .avatar-container {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    margin: -40px 70px;
+  }
+
+  .avatar {
+    border: white solid 3px;
+    border-radius: 44px;
+  }
+
+  .badge-vip {
+    position: absolute;
+    margin: -28px 0 0 55px;
   }
 
 

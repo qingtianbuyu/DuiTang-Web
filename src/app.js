@@ -7,14 +7,16 @@ require ('jquery/dist/jquery.min.js')
 
 import Vue from 'vue'
 import router from './router/router.js'
+import store from './store'
 import App from './index'
 
 
 
 /* eslint-disable no-new */
-new Vue({
+export default 	new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
