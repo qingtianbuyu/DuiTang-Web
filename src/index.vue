@@ -202,15 +202,34 @@
       <h3>大家都在逛</h3>
     </div> 
 
+  <div class="dt-water-container">
+    
+     <div class="grid">
+        <div class="grid-sizer"></div>
+        <div class="grid-item" v-for="item in hotList" >
+              <img  v-bind:src="item.photo.path + '?imageView2/2/w/224'" >  
+        </div>
+     </div>  
+  </div>
+
   </div>
 </template>
 
 <script>
+
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import DtBar from './components/DtBar'
 import * as types from './store/modules/user/mutation-types'
- 
+// var $ = require('jquery');
+var jQueryBridget = require('jquery-bridget');
+var Masonry = require('masonry-layout');
+var imagesLoaded = require('imagesloaded');
+
+imagesLoaded.makeJQueryPlugin( $ );
+jQueryBridget( 'masonry', Masonry, $ );
+
+
 export default {
   name: 'app',
   data(){
@@ -230,7 +249,9 @@ export default {
           {id: 7, name:"原创", url:'#'}
         ],
 
-        userList: []
+        userList: [],
+        hotList:  []
+
       }
   },
 
@@ -238,16 +259,37 @@ export default {
     this.$store.dispatch(types.LIST_USER_BY_TOP).then(() => {
       this.userList = this.$store.state.userList
       //终于取到值了
-      this.userList.items.forEach(function(value, index){
-         console.log(value.username)  
-      });
+      // this.userList.items.forEach(function(value, index){
+      //    console.log(value.username)  
+      // });
       
+    }),
+
+    this.$store.dispatch(types.LIST_HOT).then(() => {
+       this.hotList = this.$store.state.userList.hotList
+      // this.hotList.hotList.forEach(function(value, index){
+      //    // console.log(value.album.covers.join(","));  
+      // });
+      Vue.nextTick(function(){
+          
+        // init Masonry
+         var $grid = $('.grid').masonry({
+          itemSelector: '.grid-item',
+          percentPosition: true,
+          columnWidth: '.grid-sizer',
+          gutter: 10
+        });
+    
+        $grid.imagesLoaded().always( function() {
+          $grid.masonry('layout');
+        });
+          //-------------    
+      })
     })
   },
 
   mounted:function(){
     this.$nextTick(function(){
-        //对DOM的操作放在这
 
     })
   },
@@ -257,7 +299,7 @@ export default {
   }
 }
 
-
+  
 </script>
 
 <style scoped>
@@ -511,6 +553,62 @@ export default {
     position: absolute;
     margin: -28px 0 0 55px;
   }
+
+
+  .hot-list-container {
+    margin: 0 auto;
+    padding: 0;
+    width: 1222px;
+    margin-bottom: 40px;
+    background-color: rgb(241,242,243);
+  }
+
+
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { overflow-y: scroll; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+.grid {
+  background: #DDD;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 224px;
+}
+
+.grid-item {
+  float: left;
+  margin-bottom: 10px;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+
+  .dt-water-container {
+    margin: 0 auto;
+    width: 1200px;
+  }
+
+
+
 
 
   @media screen and ( min-width: 1261px) {

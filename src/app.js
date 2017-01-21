@@ -17,6 +17,5 @@ export default 	new Vue({
   el: '#app',
   router,
   store,
-  template: '<App/>',
-  components: { App }
+  ...App
 })

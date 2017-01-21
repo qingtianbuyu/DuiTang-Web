@@ -7,3 +7,11 @@ export function listUserByTop() {
 		})
 	})
 }
+
+export function listHot(){
+	return new Promise((resolve, reject) => {
+		axios.get('http://localhost:8080/recommend.json').then(function(response){
+				resolve(response.data)
+		})
+	} )
+}

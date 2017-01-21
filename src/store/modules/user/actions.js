@@ -7,3 +7,9 @@ export const LIST_USER_BY_TOP = ({commit, dispatch, state}) => {
 		commit(types.LIST_USER_BY_TOP, userList)
 	});
 }
+
+export const LIST_HOT = ({commit, dispatch, state}) => {
+	return userApi.listHot().then((hotList) => {
+		commit(types.LIST_HOT, hotList)
+	});
+}
