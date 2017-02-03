@@ -192,24 +192,50 @@
       </div >
     </div>
 
-    
     <div class="common-line-container">
       <div class="common-line"></div>
     </div>
-    
 
     <div class="dt-title">
       <h3>大家都在逛</h3>
     </div> 
 
   <div class="dt-water-container">
-    
      <div class="grid">
         <div class="grid-sizer"></div>
         <div class="grid-item" v-for="item in hotList" >
-              <img  v-bind:src="item.photo.path + '?imageView2/2/w/224'" >  
+              <img  v-bind:src="item.photo.path + '?imageView2/2/w/224'" >
+              <div class="grid-msg">
+                {{ item.msg }}
+              </div>
+              <p>
+                <span class="daren-star"> </span>
+                <span class="daren-count-total">3612</span>
+                <span class="daren-thumb"> </span>
+                <span class="daren-count-total">3612</span>
+              </p>
+              <div class="grid-item-line"></div>
+              <div class="sender-container">
+                  <a href="#">
+                    <img src="./assets/hot-avatar.jpeg" alt="">
+                  </a>
+                  <ul class="sender-container-right">
+                    <li>
+                        <a href="#">{{item.sender.username}}</a>  
+                    </li>
+                    <li>  
+                        <span>收藏到 
+                            <a href="#">{{ item.album.name }}
+                        </span>
+                    </li>
+                  </ul>
+              </div>
         </div>
      </div>  
+  </div>
+
+  <div class="dt-water-container">
+      <button class="btn-more-scan">浏览更多></button>
   </div>
 
   </div>
@@ -221,7 +247,7 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import DtBar from './components/DtBar'
 import * as types from './store/modules/user/mutation-types'
-// var $ = require('jquery');
+var $ = require('jquery');
 var jQueryBridget = require('jquery-bridget');
 var Masonry = require('masonry-layout');
 var imagesLoaded = require('imagesloaded');
@@ -259,17 +285,11 @@ export default {
     this.$store.dispatch(types.LIST_USER_BY_TOP).then(() => {
       this.userList = this.$store.state.userList
       //终于取到值了
-      // this.userList.items.forEach(function(value, index){
-      //    console.log(value.username)  
-      // });
-      
     }),
 
     this.$store.dispatch(types.LIST_HOT).then(() => {
-       this.hotList = this.$store.state.userList.hotList
-      // this.hotList.hotList.forEach(function(value, index){
-      //    // console.log(value.album.covers.join(","));  
-      // });
+      this.hotList = this.$store.state.userList.hotList
+      
       Vue.nextTick(function(){
           
         // init Masonry
@@ -283,15 +303,13 @@ export default {
         $grid.imagesLoaded().always( function() {
           $grid.masonry('layout');
         });
-          //-------------    
+          //----end masonry---------    
       })
     })
   },
 
   mounted:function(){
-    this.$nextTick(function(){
-
-    })
+    
   },
 
   components: { 
@@ -337,14 +355,14 @@ export default {
   }
 
 
-  ul {
+  .hotSpot ul {
     list-style: none;
     padding-top: 5px;
     width: 100%;
     height: 60px;
   }
 
-  li {
+  .hotSpot li {
     float: left;
     margin-top: 10px;
   }
@@ -513,8 +531,9 @@ export default {
     display: block;
     padding-top: 51px;
     color: #333 !important;
-
   }
+
+
   .recommend-desc-container p {
     margin: 4px auto 0;
     padding: 0;
@@ -528,6 +547,14 @@ export default {
     height: 16px;
     display: inline-block;
     background-position: -4px -50px;
+  }
+
+  .daren-thumb {
+    background: url('./assets/sprite.png') no-repeat;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-position: -90px -50px;
   }
 
   .daren-expertise {
@@ -573,10 +600,6 @@ body { font-family: sans-serif; }
 
 /* ---- grid ---- */
 
-.grid {
-  background: #DDD;
-}
-
 /* clear fix */
 .grid:after {
   content: '';
@@ -593,7 +616,8 @@ body { font-family: sans-serif; }
 
 .grid-item {
   float: left;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
+  background-color: #fff;
 }
 
 .grid-item img {
@@ -607,9 +631,80 @@ body { font-family: sans-serif; }
     width: 1200px;
   }
 
+  .btn-more-scan {
+    margin: 0 auto;
+    display: block;
+    color: white;
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+    background: rgb(34,180,243);
+  }
+
+  .grid-msg {
+    padding: 10px 10px;
+  }
 
 
+  .grid-item p {
+    margin: 0 0 0 10px;
+    padding: 0;
+    overflow: hidden;
+  }
 
+
+  .grid-item-line  {
+    width: 100%;
+    background-color: #eee;
+    height: 1px;
+    margin: 5px 0;
+  }
+  
+  .sender-container {
+    padding: 0 0 10px 10px;
+    overflow: hidden;
+    float: left;
+  }
+
+  .sender-container a {
+    float: left;
+    display: inline;
+  }
+  .sender-container a img{
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    display: inline;
+    float: left;
+  }
+
+  .sender-container-right {
+    width: 190px;
+    display: inline;
+    overflow: hidden;
+    float: right;
+    padding: 0 0 0 10px;
+  }
+
+  .sender-container-right li {
+    overflow: hidden;
+  }
+  
+  .sender-container-right li span{
+    color: #888;
+    font-size: 12px;
+    padding: 0; 
+  }
+
+  .sender-container-right a,
+  .sender-container-right li span a{
+    color: #666;
+    font-size: 12px;
+    padding: 0; 
+    word-wrap: break-word;
+    word-break: break-all;
+    float: none;
+  }
 
   @media screen and ( min-width: 1261px) {
     .banner-container {

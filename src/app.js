@@ -4,6 +4,7 @@
 require ('bootstrap/dist/js/bootstrap.js')
 require ('bootstrap/dist/css/bootstrap.css')
 require ('jquery/dist/jquery.min.js')
+require ('../static/common-color.css')
 
 import Vue from 'vue'
 import router from './router/router.js'
