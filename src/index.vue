@@ -107,7 +107,14 @@
             <h2>21张图拍呢 * 1203人收藏</h2>
             <h2>by qingtianbuyu</h2>          
           </div>
-
+        </section>
+        <section class="album-section">
+          <img src="./assets/album.jpeg" class="album-img">
+          <div class="desc-container">
+            <h3>胶卷里的十二月</h3>
+            <h2>21张图拍呢 * 1203人收藏</h2>
+            <h2>by qingtianbuyu</h2>          
+          </div>
         </section>
 
       </div>
@@ -130,6 +137,14 @@
               <h3 class="dt-clear-padding">胶卷里的十二月</h3>
               <h2>21张图拍呢 * 1203人收藏</h2>
               <h2>by qingtianbuyu</h2>  
+          </div>
+        </section>
+        <section class="album-section">
+          <img src="./assets/beauty-leg.jpeg" class="album-img">
+          <div class="desc-container">
+              <h3>胶卷里的十二月</h3>
+              <h2>21张图拍呢 * 1203人收藏</h2>
+              <h2>by qingtianbuyu</h2>
           </div>
         </section>
         <section class="album-section">
@@ -235,7 +250,10 @@
   </div>
 
   <div class="dt-water-container">
-      <button class="btn-more-scan">浏览更多></button>
+      <div class="dt-water-container-wrap">
+        <button class="btn-more-scan">浏览更多></button>  
+      </div>
+      
   </div>
 
   </div>
@@ -297,7 +315,7 @@ export default {
           itemSelector: '.grid-item',
           percentPosition: true,
           columnWidth: '.grid-sizer',
-          gutter: 10
+          gutter: 20
         });
     
         $grid.imagesLoaded().always( function() {
@@ -327,7 +345,7 @@ export default {
     height: 500px;
   }
   .w {
-    width: 1200px;
+    width: 1222px;
   }
 
   .dt-clear-padding {
@@ -462,7 +480,7 @@ export default {
   .album-section {
     width: 224px;
     display: inline-block;
-    margin-right: 40px;
+    margin-right: 15px;
     border: 1px solid #ddd;
   }
 
@@ -628,7 +646,11 @@ body { font-family: sans-serif; }
 
   .dt-water-container {
     margin: 0 auto;
-    width: 1200px;
+    width: 1222px;
+  }
+
+  .dt-water-container-wrap {
+    padding: 20px;
   }
 
   .btn-more-scan {
