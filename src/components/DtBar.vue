@@ -6,9 +6,15 @@
         <a href="#" class="dt-logo col-xs-1 col-lg-1 col-md-1 col-sm-1">堆糖</a>
     
         <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
-            <div class="borderContainer">
-              <div class="category-btn">
+            <div v-bind:class="[ isShow? 'borderContainer-show' : 'borderContainer']">
+              <div class="category-btn" v-on:mouseover="show()" v-on:mouseout="show()">
                 分类
+              </div>
+              <div v-bind:class="[isShow ? 'popwindow-addtional' : '']" v-on:mouseover="showing()" v-on:mouseout="show()">
+                
+              </div>
+              <div v-bind:class="[isShow ? 'popwindow' :'' ]" v-on:mouseover="showing()" v-on:mouseout="show()">
+                
               </div>
             </div>
         </div>
@@ -56,6 +62,23 @@
 
 
 <script>
+  export default {
+    data() {
+      return {
+        isShow: false,
+      }
+    },
+
+    methods: {
+      show: function() {
+        this.isShow = !this.isShow;
+      },
+      showing: function() {
+        this.isShow = true;
+      }
+    }
+
+  }
 
 </script>
 
@@ -106,9 +129,18 @@
   .borderContainer{
     float: left;
     margin: 17px 0 0 22px;
-    height: 25px;
+    height: 26px;
     border: 1px solid rgb(225,225,225);
   }
+
+  .borderContainer-show{
+    float: left;
+    margin: 17px 0 0 22px;
+    height: 40px;
+    border: 1px solid rgb(225,225,225);
+    box-shadow:  0 0.2px 0.2px rgba(0,0,0,0.1);
+  }
+
   .category-btn{
     text-align: center;
     font-size: 10pt;
@@ -169,12 +201,6 @@
     padding: 7px 14px;
     font-size: 13px;
   }
-
-  .test{
-    display:inline-block;
-    background-color: green;
-    position: relative;
-  }
   
   .phone{
     position: relative;
@@ -187,6 +213,26 @@
 
   .search-container{
     padding: 15px 0 0 15px;
+  }
+
+  .popwindow {
+    background-color: #fff;
+    width: 400px;
+    height: 400px;
+    z-index: 990;
+    box-shadow:  0 1px 3px rgba(0,0,0,0.6);
+    position: absolute;
+    margin-top: 10px;
+    border: 1px solid #f9f9f9;
+  }
+
+  .popwindow-addtional {
+    background-color: #fff;
+    width: 50px;
+    height: 40px;
+    z-index: 999;
+    margin: -3px 0;
+    position: absolute;
   }
 
 
