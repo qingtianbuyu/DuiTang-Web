@@ -62,6 +62,10 @@
 
 
 <script>
+
+  import eventBus from '../eventBus.js'
+  
+
   export default {
     data() {
       return {
@@ -79,9 +83,9 @@
 
       loginClick:function() {
         //点击登录按钮
-        
+        eventBus.$emit('clickLogin', '');
       }
-    }
+    },
 
   }
 

@@ -75,6 +75,9 @@
 </template>
 
 <script>
+
+	import eventBus from '../eventBus.js'
+
 	export default {
 		methods: {
 			delayShowLogin: function() {
@@ -83,6 +86,10 @@
 
 
 		},
+		created: function(){
+      		//注册事件监听
+      		eventBus.$on('clickLogin', this.delayShowLogin);
+    	},
 
 		mounted: function() {
 			setTimeout(this.delayShowLogin,3000);
