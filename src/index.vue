@@ -215,8 +215,8 @@
       <h3>大家都在逛</h3>
     </div> 
 
-  <div class="dt-water-container">
-     <div class="grid">
+    <div class="dt-water-container">
+      <div class="grid">
         <div class="grid-sizer"></div>
         <div class="grid-item" v-for="item in hotList" >
               <img  v-bind:src="item.photo.path + '?imageView2/2/w/224'" >
@@ -245,17 +245,18 @@
                     </li>
                   </ul>
               </div>
-        </div>
-     </div>  
-  </div>
+          </div>
+        </div>  
+    </div>
 
-  <div class="dt-water-container">
-      <div class="dt-water-container-wrap">
-        <button class="btn-more-scan">浏览更多></button>  
-      </div>
-      
-  </div>
+    <div class="dt-water-container">
+          <div class="dt-water-container-wrap">
+            <button class="btn-more-scan">浏览更多></button>  
+          </div>
+     </div>
 
+    <loginView></loginView>
+  
   </div>
 </template>
 
@@ -264,6 +265,8 @@
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import DtBar from './components/DtBar'
+import loginView from './components/LoginView'
+
 import * as types from './store/modules/user/mutation-types'
 var $ = require('jquery');
 var jQueryBridget = require('jquery-bridget');
@@ -326,12 +329,9 @@ export default {
     })
   },
 
-  mounted:function(){
-    
-  },
-
   components: { 
-    DtBar
+    DtBar, 
+    loginView
   }
 }
 
@@ -339,11 +339,6 @@ export default {
 </script>
 
 <style scoped>
-  .test {
-    width: 100px;
-    background-color: red;
-    height: 500px;
-  }
   .w {
     width: 1222px;
   }

@@ -41,7 +41,7 @@
                 </li>
                 <li class="line"></li>
                 <li>
-                  <a href="#">登录</a>
+                  <a href="#" v-on:click="loginClick">登录</a>
                 </li>
                 <li class="line"></li>
                 <li>
@@ -75,6 +75,11 @@
       },
       showing: function() {
         this.isShow = true;
+      },
+
+      loginClick:function() {
+        //点击登录按钮
+        
       }
     }
 
