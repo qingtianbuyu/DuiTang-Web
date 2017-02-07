@@ -1,26 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import App from '../index'
+import App from '../index.vue'
+import Home from '../module/index/home.vue'
 
 Vue.use(VueRouter)
 
-
-const AlbumList = {
-	template:'<div>测试</div>'
-}
-
+const Bar = { template: '<div><h1>bar</h1></div>' }
 
 export default new VueRouter({
   mode: 'history',
-  base: __dirname,
   routes: [
     {
     	path: '/album',
-    	component: AlbumList
+    	component: Bar
     },
     {
-    	path: '*',
-    	component: App
+      path: '／home',
+      component: Home
+    },
+    {
+      path: '*',
+      component: Home
     }
   ]
 })

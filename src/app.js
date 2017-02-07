@@ -11,12 +11,13 @@ import router from './router/router.js'
 import store from './store'
 import App from './index'
 
+console.log(router)
 
 
 /* eslint-disable no-new */
 export default 	new Vue({
   el: '#app',
-  router,
   store,
+  router,
   ...App
 })
