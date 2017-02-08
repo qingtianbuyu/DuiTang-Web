@@ -2,17 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from '../index.vue'
 import Home from '../module/index/home.vue'
+import Album from '../module/album/album.vue'
 
 Vue.use(VueRouter)
-
-const Bar = { template: '<div><h1>bar</h1></div>' }
 
 export default new VueRouter({
   mode: 'history',
   routes: [
     {
     	path: '/album',
-    	component: Bar
+    	component: Album
     },
     {
       path: '／home',
