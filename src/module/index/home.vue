@@ -76,7 +76,7 @@
     <div class="w album-container">
       <div class="album">
         <div class="album-section">
-          <a href="/album/?id=82174177" target="_blank">
+          <a href="/album/?id=82181561" target="_blank">
             <img src="../../assets/album.jpeg" class="album-img">
           </a>
           <div class="desc-container">
@@ -266,7 +266,7 @@
 <script>
 
 import Vue from 'vue'
-import { mapGetters, mapActions } from 'vuex'
+
 import DtBar from '../../components/DtBar'
 import loginView from '../../components/LoginView'
 import * as types from '../../store/modules/user/mutation-types'
