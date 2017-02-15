@@ -3,12 +3,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import userList from './modules/user'
 import albumList from './modules/album'
+import articleList from './modules/article'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 	modules : {
 		userList,
-		albumList
+		albumList, 
+		articleList
 	}
 })

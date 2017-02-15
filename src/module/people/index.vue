@@ -87,7 +87,6 @@
 		float: left;
 		width: 488px;
 		height: 100%;
-		background-color: red;
 		position: relative;
 		display: inline-block;
 	}
@@ -96,7 +95,6 @@
 		float: left;
 		width: 712px;
 		height: 100%;
-		background-color: blue;
 		display: inline-block;
 	}
 

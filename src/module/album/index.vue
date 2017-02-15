@@ -102,7 +102,7 @@
 			var that = this;
 			this.$store.dispatch(types.LISTBYALBUMID).then(() => {
       			var albumList = this.$store.state.albumList;
-      			that.albumList = this.$store.state.albumList.itemList;
+      			that.albumList = this.$store.state.albumList.albumItemList;
 
       			Vue.nextTick(function(){
 		        	// init Masonry

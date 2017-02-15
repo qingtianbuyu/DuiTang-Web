@@ -1,1 +1,3 @@
 export const LISTBYALBUMID = 'LISTBYALBUMID'
+
+export const LISTBYUSER = 'LISTBYUSER'
