@@ -7,7 +7,7 @@ require ('jquery/dist/jquery.min.js')
 require ('../static/common-color.css')
 
 import Vue from 'vue'
-import router from './router/router.js'
+import router from './router'
 import store from './store'
 import App from './index'
 

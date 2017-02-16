@@ -15,3 +15,13 @@ export function listByUser() {
 		})
 	})
 }
+
+export function listByPeopleCollect() {
+	return new Promise((resolve, reject) => {
+		axios.get('http://localhost:8080/people_collect.json').then(function(response){
+			resolve(response.data)
+		})
+	})
+}
+
+

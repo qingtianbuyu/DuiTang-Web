@@ -5,3 +5,7 @@ export const albumItemList = state => {
 export const albumListData = state => {
 	return state.albumList;
 }
+
+export const peopleCollectAlbumListData = state => {
+	return state.peopleCollectAlbumList;
+}

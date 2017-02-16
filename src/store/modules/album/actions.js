@@ -12,3 +12,9 @@ export const LISTBYUSER = ({commit, dispatch, state}) => {
 		commit(types.LISTBYUSER, albumList)
 	});
 }
+
+export const LISTBYPEOPLECOLLECT = ({commit, dispatch, state}) => {
+	return albumApi.listByPeopleCollect().then((albumList) => {
+		commit(types.LISTBYPEOPLECOLLECT, albumList)
+	});
+}

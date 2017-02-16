@@ -6,15 +6,12 @@ Vue.use(VueRouter)
 import Home   from '../module/index'
 import Album  from '../module/album'
 import People from '../module/people'
-//非单页懒加载会导致部分样式丢失
-
-
-const UserHome = { template: '<div>Profile</div>' }
-const UserProfile = { template: '<div>Profile</div>' }
-const UserPosts = { template: '<div>Posts</div>' }
 
 const People_Album = resolve => require(['../module/people/album.vue'], resolve)
 const People_Article = resolve => require(['../module/people/article.vue'], resolve)
+const People_Fav_Album = resolve => require(['../module/people/favAlbum.vue'], resolve)
+const People_Collect_Album = resolve => require(['../module/people/albumCollect.vue'], resolve)
+
 
 
 export default new VueRouter({
@@ -41,15 +38,15 @@ export default new VueRouter({
         },
         {
           path: 'favalbum',
-          component: UserPosts
+          component: People_Fav_Album
         },
         {
           path: 'collect',
-          component: UserHome
+          component: People_Collect_Album
         },
         {
           path: 'original',
-          component: UserHome
+          component: People_Collect_Album
         }
       ]
     },

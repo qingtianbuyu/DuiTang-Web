@@ -2,7 +2,8 @@ import * as types from './mutation-types'
 
 export const state = {
 	albumItemList: [],
-	albumList: []
+	albumList: [],
+	peopleCollectAlbumList:[]
 }
 
 export const mutations = {
@@ -11,7 +12,11 @@ export const mutations = {
 	}, 
 
 	[types.LISTBYUSER](state, albumList){
-		state.albumList = albumList.data.object_list
-		
+		state.albumList = albumList.data.object_list	
+	}, 
+
+	[types.LISTBYPEOPLECOLLECT](state, albumList){
+		state.peopleCollectAlbumList = albumList.data.object_list	
 	}
+
 }

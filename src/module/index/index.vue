@@ -313,7 +313,6 @@ export default {
 
     this.$store.dispatch(types.LIST_HOT).then(() => {
       this.hotList = this.$store.state.userList.hotList
-      
       Vue.nextTick(function(){
           
         // init Masonry

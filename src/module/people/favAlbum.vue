@@ -7,13 +7,15 @@
 				<div class="item-album-info">
 					{{item.count}}张图片 {{item.favorite_count}}人收藏
 				</div>
+				<p>by {{ item.user.username}}</p>
 			</div>
 		</div>
 	</div>
 </template>
-<script>
 
+<script>
 	import * as types from '../../store/modules/album/mutation-types'
+
 
 	export default {
 		data() {
@@ -25,14 +27,14 @@
 
 		mounted: function() {
 			//加载数据
-			this.$store.dispatch(types.LISTBYUSER).then( () => {
-				this.albumList = this.$store.state.albumList.albumList;
-			});
-		},
+				this.$store.dispatch(types.LISTBYUSER).then( () => {
+					this.albumList = this.$store.state.albumList.albumList;
+				});
+		}
+}
 
-	}
-	
 </script>
+
 <style>
 	.album {
 		padding: 40px 0 0 0; 
@@ -60,11 +62,14 @@
 	}
 
 	.item-album-title {
+		padding: 0px;
 		width: 100%;
 		height: 35px;
 		line-height: 35px;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space:nowrap;
-	}
+		margin:0px;
+	}	
+
 </style>
