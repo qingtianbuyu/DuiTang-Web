@@ -4,7 +4,9 @@
 	      <div class="grid">
 	        <div class="grid-sizer"></div>
 	        <div class="grid-item" v-for="item in albums" >
-	              <img  v-bind:src="item.photo.path + '?imageView2/2/w/224'" >
+                  <a href="/blog?id=12580" target="_blank">
+                    <img  v-bind:src="item.photo.path + '?imageView2/2/w/224'" > 
+                  </a>
 	              <div class="grid-msg">
 	                {{ item.msg }}
 	              </div>
