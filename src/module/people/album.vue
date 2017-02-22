@@ -33,7 +33,7 @@
 	}
 	
 </script>
-<style>
+<style scoped>
 	.album {
 		padding: 40px 0 0 0; 
 	}

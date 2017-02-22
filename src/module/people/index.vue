@@ -70,7 +70,7 @@
 
 </script>
 
-<style>
+<style scoped>
 
 	.people-content {
 		margin: 0 auto;

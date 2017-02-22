@@ -20,7 +20,7 @@
 						<div class="content-detail-content">
 							<img src="http://ogvz3mlxq.bkt.clouddn.com/20170207111556_rQZh2.jpeg?imageView2/1/w/400/h/400" alt="">
 						</div>
-						<div class="content-detail-footer">
+						<div class="content-detail-footer" v-if="blog">
 							<p class="msg">{{blog.msg}}</p>
 							<div class="link">
 								<div class="link-cover"></div>
@@ -29,6 +29,46 @@
 								  <span class="price">¥{{ blog.item.price }}</span>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		<div class="center-content">
+			<div class="content-center-in-parent" v-if="blog">
+				<div class="content-left">
+					<a href="#" class="avatar">
+						<img data-v-ccb82700="" src="/static/img/album_avatar.e97aa5b.jpeg" alt="" class="album-avatar">
+					</a>
+					<div class="user-info">
+						<span>{{blog.sender.username}}</span>
+						<i>{{blog.add_datetime}}</i>
+						<p class="album-name">发布到 {{blog.album.name}}</p>
+					</div>
+					<div class="blog-album-wrap">
+						<div class="blog-album">
+							<img src="http://ogvz3mlxq.bkt.clouddn.com/20170207101007_sCuiU.jpeg?imageView2/1/w/100/h/100" alt="" class="album-icon">
+							<p class="padding10">{{blog.album.name}}</p>
+							<p class="padding10">
+								<span>{{blog.album.count}}张图片 * {{blog.album.favorite_count}} 人收藏</span>
+							</p>
+						</div>
+					</div>
+						<div class="blog-album-wrap">
+							<div class="blog-album-related" v-for="item in blog.related_albums">
+								<img src="http://ogvz3mlxq.bkt.clouddn.com/20170207101007_sCuiU.jpeg?imageView2/1/w/100/h/100" alt="" class="album-icon">
+								<p class="padding10">{{blog.album.name}}</p>
+								<p class="padding10">
+									<span>{{item.count}}张图片 * {{item.favorite_count}} 	人收藏</span>
+								</p>
+							</div>
+						</div>
+
+					</div>
+					<div class="content-right">
+						<div class="content-right-wrap">
+							<button class="btn-zan"></button>
+							<input type="text" class="memo-msg">
+						</div>
+						<div class="line"></div>
 					</div>
 				</div>
 			</div>
@@ -61,7 +101,7 @@
 
 </script>
 
-<style>
+<style scoped>
 
 	.line {
 		background-color: rgba(0,0,0,0.1);
@@ -173,5 +213,115 @@
 		color: #f46;
 		padding-right: 15px;
 	}
+
+	.content-center-in-parent {
+		margin: 0 auto;
+		width: 1200px;
+		overflow: hidden;
+	}
+	.content-left {
+		float: left;
+		width: 716px;
+		background-color: #fff;
+		position: relative;
+		border: 1px solid #ccc;
+		overflow: hidden;
+		padding-bottom: 20px;
+	}
+	.content-right {
+		float: right;
+		width: 428px;
+		background-color: #fff;
+		position: relative;
+		padding: 10px 0 30px 0;
+	}
+
+	.avatar {
+		overflow: hidden;
+		width: 36px;
+		height: 36px;
+		display: inline-block;
+		margin: 18px; 
+		float: left;
+	}
+
+	.album-avatar {
+		width: 36px;
+		height: 36px;
+		border: 1px #ccc solid;
+		border-radius: 18px;
+		margin: 0;
+	}
+	.user-info {
+		display: inline-block;
+		height: 36px;
+		line-height: 36px;
+		margin: 9px 0 0 10px;
+	}
+
+	.album-name {
+		margin: 0;
+		line-height: 14px;
+	}
+
+	.blog-album-wrap {
+		border-bottom: 1px solid #ddd;
+		overflow: hidden;
+		width: 100%;
+		padding: 10px 0 0 0;
+	}
+
+	.blog-album-related,
+	.blog-album {
+		float: right;
+		width: 626px;
+		height: 100px;
+		background-color: #eee;
+		margin: 0 18px 18px 0;
+		overflow: hidden;
+	}
+
+	.album-icon {
+		float: left;
+		margin-right: 10px;
+	}
+
+	.padding10 {
+		padding: 10px 0 0 0;
+		margin: 0;
+	}
+
+	.blog-album-related {
+		margin: 0 18px 0 0;
+		border-bottom: 1px solid #fff;
+	}
+
+	.content-right-wrap {
+		overflow: hidden;
+	}
+
+	.btn-zan {
+		width: 40px;
+		height: 32px;
+		float: left;
+		margin: 15px;
+		background: url(http://img5.duitang.com/uploads/people/201405/26/20140526133240_RmVVc.png) 6px 3px no-repeat #FB3;
+		border: 0;
+	}
+
+	.memo-msg {
+		margin: 15px 0 0 0;
+		width: 348px;
+		height: 32px;
+		float: left;
+	}
+
+	.center-content {
+		overflow: hidden;
+		position: relative;
+		background: rgb(241,242,243);
+		padding: 40px 0;
+	}
+
 	
 </style>

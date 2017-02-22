@@ -85,7 +85,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 .top20 {
 	margin: 20px 0 0 0;

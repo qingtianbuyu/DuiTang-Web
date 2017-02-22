@@ -41,7 +41,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	
 	.fl {
 		float: left;
