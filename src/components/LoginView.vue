@@ -14,12 +14,12 @@
 		      <div class="modal-body">
 		        <div class="login-container">
 		        	<div class="input-group">
-			            <input type="text" class="form-control" placeholder="用户名/邮箱">
+			            <input type="text" class="form-control" placeholder="用户名/邮箱" v-model="phone">
 			            <span class="input-group-btn">
 			            </span>
 			        </div>
 			        <div class="input-group">
-			            <input type="text" class="form-control" placeholder="密码">
+			            <input type="text" class="form-control" placeholder="密码" v-model="password">
 			            <span class="input-group-btn">
 			            </span>
 			        </div>
@@ -35,7 +35,7 @@
 				    </div>
 				    <div class="input-group">
 					    <a href="#">
-					    	<button type="button" class="btn btn-login">登录</button>
+					    	<button type="button" @click="login" class="btn btn-login">登录</button>
 					    </a>
 				    </div>
 				    <div class="input-group">
@@ -77,14 +77,29 @@
 <script>
 
 	import eventBus from '../eventBus.js'
+	import * as types from '../store/modules/user/mutation-types'
 
 	export default {
+		data() {
+			return {
+				phone: '',
+				password: '',
+			}
+		},
+
+
 		methods: {
 			delayShowLogin: function() {
       			$('#myModal').modal();
     		},
 
-
+    		login: function (){
+    			this.$store.dispatch(types.LOGIN,{phone: this.phone, password: this.password
+    					
+	    			}).then(() => {
+					      
+				});
+    		}
 		},
 		created: function(){
       		//注册事件监听

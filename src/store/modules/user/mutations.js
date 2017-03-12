@@ -2,7 +2,8 @@ import * as types from './mutation-types'
 
 export const state = {
 	items: [],
-	hotList: []
+	hotList: [],
+	account: {}
 }
 
 export const mutations = {
@@ -13,5 +14,10 @@ export const mutations = {
 	[types.LIST_HOT](state, hotList){
 		console.log(hotList.data.next_start)
 		state.hotList = hotList.data.object_list		
+	},
+
+	[types.LOGIN](state, account){
+		console.log(account)
+		state.account = account		
 	}
 }

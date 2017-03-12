@@ -13,3 +13,10 @@ export const LIST_HOT = ({commit, dispatch, state}) => {
 		commit(types.LIST_HOT, hotList)
 	});
 }
+
+
+export const LOGIN = ({commit, dispatch, state}, payload) => {
+	return userApi.login(payload.phone, payload.password).then((account) => {
+		commit(types.LOGIN, account)
+	});
+}

@@ -5,3 +5,7 @@ export const userList = state => {
 export const hotList = state => {
     return state.hotList
 }
+
+export const account = state => {
+    return state.account
+}
