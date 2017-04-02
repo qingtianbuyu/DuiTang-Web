@@ -47,12 +47,15 @@
 			
 		</div>
 		<loginView></loginView>
+		<addAlbumDialog></addAlbumDialog>
+		
 	</div>
 </template>
 
 <script>
 	import dtBar from '../../components/DtBar'
 	import 	loginView from '../../components/LoginView'
+	import 	addAlbumDialog from '../../components/AddAlbumDialog'
 
 	export default {
 		data() {
@@ -62,7 +65,7 @@
 		},
 
 		components: {
-			dtBar, loginView
+			dtBar, loginView, addAlbumDialog
 		}
 
 

@@ -6,6 +6,7 @@ import albumList from './modules/album'
 import articleList from './modules/article'
 import blogModule from './modules/blog'
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -14,5 +15,6 @@ export default new Vuex.Store({
 		albumList, 
 		articleList,
 		blogModule		
-	}
+	},
+	// plugins
 })

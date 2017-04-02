@@ -6,6 +6,8 @@ export const state = {
 	account: {}
 }
 
+export const STORAGE_KEY_ACCOUNT = 'account'
+
 export const mutations = {
 	[types.LIST_USER_BY_TOP](state, userList){
 		state.items = userList.data.object_list
@@ -17,7 +19,6 @@ export const mutations = {
 	},
 
 	[types.LOGIN](state, account){
-		console.log(account)
 		state.account = account		
 	}
 }

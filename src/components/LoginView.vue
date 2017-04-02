@@ -23,6 +23,12 @@
 			            <span class="input-group-btn">
 			            </span>
 			        </div>
+
+			        <div v-if="message" class="error-message">
+			        	{{message}}
+			        </div>
+
+
 			        <div class="input-group">
 				        <div class="checkbox remember-pwd">
 							<label>
@@ -84,6 +90,7 @@
 			return {
 				phone: '',
 				password: '',
+				message: ''
 			}
 		},
 
@@ -94,11 +101,16 @@
     		},
 
     		login: function (){
-    			this.$store.dispatch(types.LOGIN,{phone: this.phone, password: this.password
-    					
-	    			}).then(() => {
-					      
-				});
+    			this.$store.dispatch(types.LOGIN,{phone: this.phone, password: this.password}).then(()=>{
+    				var account = this.$store.state.userList.account;
+    				if(account.errorCode == 0){
+    					window.localStorage.setItem("account", JSON.stringify(account))
+    					$('#myModal').modal('hide');				
+    					this.message = '';	
+    				} else{
+    					this.message = account.message;	
+    				}
+    			});
     		}
 		},
 		created: function(){
@@ -107,7 +119,11 @@
     	},
 
 		mounted: function() {
-			setTimeout(this.delayShowLogin,3000);
+			var account = JSON.parse(window.localStorage.getItem("account")) 
+			//判断是否已登陆
+			if(!account || account.errorCode){
+				setTimeout(this.delayShowLogin,3000);
+			}
 		}
 	}
 </script>
@@ -276,6 +292,10 @@
 	.tencent-weibo {
 		background: url('../assets/login-type.png') no-repeat;
 		background-position: -131px -4px;
+	}
+
+	.error-message {
+		color: #ff0000;
 	}
 
 

@@ -82,8 +82,13 @@
       },
 
       loginClick:function() {
-        //点击登录按钮
-        eventBus.$emit('clickLogin', '');
+        var account = JSON.parse(window.localStorage.getItem("account")) 
+        if(account.errorCode == 0){
+           window.open('people/?user_id=' + account.data.id)
+        }else{
+          //点击登录按钮
+          eventBus.$emit('clickLogin', ''); 
+        }
       }
     },
 

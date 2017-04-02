@@ -21,7 +21,7 @@ export function login(phone, password) {
 		var params = new URLSearchParams();
 		params.append('phone', phone);
 		params.append('password', password);
-		axios.post('http://192.168.1.103:3000/api/user/login', params).then(function(response){
+		axios.post('http://192.168.1.105:9001/api/user/login', params).then(function(response){
 				resolve(response.data)
 		});
 	} )	
