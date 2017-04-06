@@ -98,9 +98,9 @@
 
 		mounted: function() {
 			//拿到ID之后可加载接口数据
-			console.log(this.$route.query.id);
+			var albumId = this.$route.query.id;
 			var that = this;
-			this.$store.dispatch(types.LISTBYALBUMID).then(() => {
+			this.$store.dispatch(types.LISTBYALBUMID, {id: albumId}).then(() => {
       			var albumList = this.$store.state.albumList;
       			that.albumList = this.$store.state.albumList.albumItemList;
 

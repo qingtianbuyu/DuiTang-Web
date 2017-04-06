@@ -1,9 +1,14 @@
 import axios from 'axios'
 
-export function listByAlbumId() {
+export function listByAlbumId(id, currentPage) {
 	return new Promise( (resolve, reject) => {
-		axios.get('http://localhost:8080/list_by_album.json').then(function(response){
-			resolve(response.data)
+		axios.get('http://192.168.1.105:9001/api/blog/list/album', {
+			params: {albumId:id,
+						page:currentPage,
+					 }
+		})
+			.then(function(response){
+				resolve(response.data)
 		})
 	})
 }
@@ -28,7 +33,7 @@ export function listByPeopleCollect() {
 export function create(userId,name, desc, tag) {
 	return new Promise( (resolve, reject) => {
 		var params = new URLSearchParams();
-		params.append('user_id', userId);
+		params.append('userId', userId);
 		params.append('name', name);
 		params.append('desc', desc);
 		params.append('tag', tag);
