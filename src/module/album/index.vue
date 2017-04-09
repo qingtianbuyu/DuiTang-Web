@@ -17,6 +17,10 @@
 				<div class="album-header-bottom-container">
 					<div class="operate-wrap">
 						<div class="operate">
+							<div @click="release" class="release">
+								<span class="btn-collect-common btn-collect"><i class="btn-collect-star"></i>发布
+								</span>	
+							</div>
 							<a href="#">
 								<span class="btn-collect-common btn-collect"><i class="btn-collect-star"></i>收藏
 								</span>	
@@ -77,6 +81,7 @@
 		    </div>
 		</div>
 		<loginView></loginView>
+		<dragUploadDialog></dragUploadDialog>
 	</div>
 </template>
 
@@ -86,13 +91,22 @@
 	import Vue from 'vue'
 	import DtBar from '../../components/DtBar'
 	import loginView from '../../components/LoginView'
+	import dragUploadDialog from '../../components/DragUploadDialog'
 	import * as types from '../../store/modules/album/mutation-types'
+	import eventBus from '../../eventBus.js'
 
 
 	export default {
 		data() {
 			return {
 			 	albumList: []
+			}
+		},
+
+		methods: {
+			release: function() {
+				//显示拖拽上传对话框
+				eventBus.$emit('clickShowUploadDialog')
 			}
 		},
 
@@ -125,7 +139,8 @@
 		},
 		components: {
 			DtBar,
-			loginView
+			loginView,
+			dragUploadDialog
 		}
 	}
 </script>
@@ -462,6 +477,11 @@ body { font-family: sans-serif; }
     word-wrap: break-word;
     word-break: break-all;
     float: none;
+  }
+
+  .release {
+  	display: inline-block;
+  	cursor: pointer;
   }
 
 		

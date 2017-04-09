@@ -7,10 +7,12 @@ require ('jquery/dist/jquery.min.js')
 require ('../static/common-color.css')
 
 import Vue from 'vue'
+import Element from 'element-ui'
 import router from './router'
 import store from './store'
 import App from './index'
 
+Vue.use(Element)
 
 /* eslint-disable no-new */
 export default 	new Vue({
