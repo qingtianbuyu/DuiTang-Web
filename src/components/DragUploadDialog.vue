@@ -13,14 +13,23 @@
 		      </div>
 		      <div class="modal-body">
 		        	<el-upload
+					  action="//up-z0.qiniu.com/"
+		        	  list-type="picture"
 					  class="upload-demo"
 					  drag
-					  action="https://jsonplaceholder.typicode.com/posts/"
-					  :multiple="false">
-					  <i class="el-icon-upload"></i>
-					  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-					  <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+					  :before-upload="beforeUpload"
+					  :on-success="uploadSuccess"
+					  :on-preview="handlePictureCardPreview"
+					  :multiple="false"
+					  :on-error="uploadFailed"
+					  :data="form">
+						  <i class="el-icon-upload"></i>
+						  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+						  <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
 					</el-upload>
+					<el-dialog v-model="dialogVisible" size="tiny">
+					  <img width="100%" :src="dialogImageUrl" alt="">
+					</el-dialog>
 		        
 		      </div>
 		    </div>
@@ -41,7 +50,12 @@
 			return {
 				name: '',
 				desc: '',
-				tag: ''
+				tag: '',
+				dialogVisible: false,
+				dialogImageUrl: '',
+				form: {
+					token: 'jHFPcat49bd3n8LjxpHdR9i7fnu8y0im7ar1pRdn:OGncelH6zy1UbAZ914JlPvLn4-M=:eyJjYWxsYmFja1VybCI6IjIwMTQwMjIwMTgxMzMxX3JSd3d2LmdpZiIsInNjb3BlIjoiY3NoZW4iLCJkZWFkbGluZSI6MTQ5MTgzOTI0M30='
+				}
 			}
 		},
 
@@ -54,7 +68,25 @@
     		create: function (){
     			
     			// 跳转页面
-    		}
+    		},
+
+    		handlePictureCardPreview(file) {
+		        this.dialogImageUrl = file.url;
+		        this.dialogVisible = true;
+      		},
+
+      		beforeUpload: function(file){
+      			
+      		},
+
+      		uploadSuccess: function(response, file, fileList){
+      			console.log(response)	
+      		},
+      		uploadFailed: function(err, file, fileList){
+      			console.log('=======')
+      			console.log(err)
+      		}
+
 		},
 		created: function(){
       		//注册事件监听
