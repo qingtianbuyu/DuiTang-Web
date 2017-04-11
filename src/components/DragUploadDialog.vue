@@ -13,7 +13,7 @@
 		      </div>
 		      <div class="modal-body">
 		        	<el-upload
-					  action="//up-z0.qiniu.com/"
+					  action="//upload.qiniu.com/"
 		        	  list-type="picture"
 					  class="upload-demo"
 					  drag
@@ -41,8 +41,7 @@
 <script>
 
 	import eventBus from '../eventBus.js'
-	import * as types from '../store/modules/user/mutation-types'
-	import * as articleTool from '../api/album'
+	import * as commonTool from '../api/common'
 	require('./../../node_modules/element-ui/lib/theme-default/index.css')
 
 	export default {
@@ -53,9 +52,7 @@
 				tag: '',
 				dialogVisible: false,
 				dialogImageUrl: '',
-				form: {
-					token: 'jHFPcat49bd3n8LjxpHdR9i7fnu8y0im7ar1pRdn:OGncelH6zy1UbAZ914JlPvLn4-M=:eyJjYWxsYmFja1VybCI6IjIwMTQwMjIwMTgxMzMxX3JSd3d2LmdpZiIsInNjb3BlIjoiY3NoZW4iLCJkZWFkbGluZSI6MTQ5MTgzOTI0M30='
-				}
+				form: {}
 			}
 		},
 
@@ -76,7 +73,11 @@
       		},
 
       		beforeUpload: function(file){
-      			
+      			return commonTool.getQNToken(file.name).then(response => {
+      				this.form = {
+      					token: response.data.token
+      				}
+      			})
       		},
 
       		uploadSuccess: function(response, file, fileList){
