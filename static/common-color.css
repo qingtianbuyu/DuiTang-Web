@@ -2,3 +2,7 @@
 body {
     background-color: rgb(241,242,243);
 }
+
+input[type="file"] .el-upload__input {
+	display: none;
+}

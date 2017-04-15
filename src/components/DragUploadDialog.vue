@@ -12,25 +12,61 @@
 		        
 		      </div>
 		      <div class="modal-body">
-		        	<el-upload
-					  action="//upload.qiniu.com/"
-		        	  list-type="picture"
-					  class="upload-demo"
-					  drag
-					  :before-upload="beforeUpload"
-					  :on-success="uploadSuccess"
-					  :on-preview="handlePictureCardPreview"
-					  :multiple="false"
-					  :on-error="uploadFailed"
-					  :data="form">
-						  <i class="el-icon-upload"></i>
-						  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-						  <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
-					</el-upload>
-					<el-dialog v-model="dialogVisible" size="tiny">
-					  <img width="100%" :src="dialogImageUrl" alt="">
-					</el-dialog>
-		        
+		      		<div class="upload-container mt">
+		      			<el-upload
+			        	  v-show="!dialogVisible"
+						  action="//upload.qiniu.com/"
+			        	  list-type="picture"
+						  drag
+						  :before-upload="beforeUpload"
+						  :on-success="uploadSuccess"
+						  :multiple="false"
+						  :on-error="uploadFailed"
+						  :data="form">
+							  <i class="el-icon-upload"></i>
+							  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+							  <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+						</el-upload>	
+		      		</div>
+
+					<div class="previewImgContainer" v-show="dialogVisible">
+						<div class="uploadedImage-wrap">
+							<img  :src="dialogImageUrl" alt="" class="uploadedImage">		
+						</div>
+					</div>
+					<div class="drop-cotainer">
+						<!-- Split button -->
+						<div class="btn-group">
+							  <button type="button" class="btn btn-default btn-select-width">Action</button>
+							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    <span class="caret"></span>
+								    <span class="sr-only">Toggle Dropdown</span>
+						  		</button>
+						  	<ul class="dropdown-menu btn-select-width" >
+							    <li><a href="#">Action</a></li>
+							    <li><a href="#">Another action</a></li>
+							    <li><a href="#">Something else here</a></li>
+							    <li>
+								    <div class="inner-create-album">
+											    <div class="input-group">
+											      <input type="text" class="form-control" placeholder="">
+											      <span class="input-group-btn">
+											        <button class="btn btn-default" type="button">创建</button>
+											      </span>
+											    </div><!-- /input-group -->
+									</div><!-- /.row -->
+						    	</li>
+						  	</ul>
+						</div>	<!-- /.btn-group -->
+					</div>
+
+					
+					<div class="input-group padding-20 gray-boder">
+		            	<textarea  class="textarea-desc" v-model="desc" placeholder="写点介绍,让更多人喜欢ta"></textarea>
+		        	</div>
+
+		        	<button type="button" class="btn btn-info margin-left-bottom-20 w60">发布</button>
+					
 		      </div>
 		    </div>
 		  </div>
@@ -42,7 +78,7 @@
 
 	import eventBus from '../eventBus.js'
 	import * as commonTool from '../api/common'
-	require('./../../node_modules/element-ui/lib/theme-default/index.css')
+	
 
 	export default {
 		data() {
@@ -67,11 +103,6 @@
     			// 跳转页面
     		},
 
-    		handlePictureCardPreview(file) {
-		        this.dialogImageUrl = file.url;
-		        this.dialogVisible = true;
-      		},
-
       		beforeUpload: function(file){
       			return commonTool.getQNToken(file.name).then(response => {
       				this.form = {
@@ -81,11 +112,13 @@
       		},
 
       		uploadSuccess: function(response, file, fileList){
-      			console.log(response)	
+      			this.dialogVisible = true
+      			var fileUrl = 'http://ogvz3mlxq.bkt.clouddn.com/' + response.key + '?imageView2/1/w/120/h/120';
+      			console.log(response)
+      			this.dialogImageUrl = fileUrl
       		},
       		uploadFailed: function(err, file, fileList){
-      			console.log('=======')
-      			console.log(err)
+      			this.dialogVisible = false
       		}
 
 		},
@@ -99,6 +132,9 @@
 
 
 <style scoped>
+	
+	@import url("./../../node_modules/element-ui/lib/theme-default/index.css");
+	
 
 	.dt-clear-margin {
 		margin: 0;
@@ -118,7 +154,7 @@
 	}
 
 	.modal-dialog {
-	  width: 660px;
+	  width: 500px;
 	  display: inline-block;
 	  text-align: left;
 	  vertical-align: middle;
@@ -139,15 +175,8 @@
 	}
 
 	.modal-body {
-		padding: 40px;
-		text-align: center;
-		overflow: hidden;
-	}
-
-	.btn-goto-login {
-		border: 0;
-		background: transparent;
-		color: #5678a0;
+		padding: 0px;
+		overflow: visible;
 	}
 
 	.close {
@@ -157,72 +186,72 @@
 		background-position: 15px 15px;
 	}
 
-	.login-container {
-		width: 288px;
-		float: left;
-		display: inline-block;
-		padding: 0 40px 0 0;
-	}
-
-	.qrc-container {
-		width: 280px;
-		float: left;
-		display: inline-block;
-		text-align: center;
-		border-left: 1px solid #ebebeb;
-	}
-
 	.input-group {
 		margin-bottom: 10px;
 		width: 100%;
 	}
 
-	.qrc-container p {
-		height: 20px;
-		margin: 24px 0 0 0;
+
+	.previewImgContainer {
+		background-color: #f7f7f7;
+		text-align: left;
+		overflow: hidden;
 	}
 
-	.qrc-container p:last-child {
-		height: 20px;
-		margin:  0;
+	.uploadedImage-wrap {
+		display: inline-block;
+		overflow: hidden;
+		margin: 20px;
+		padding: 5px;
+		background-color: #fff;
 	}
 
-	.remember-pwd {
-		margin: 0;
-		font-size: 12px;
-		text-align: center;
-		line-height: 20px;
-		float: left;
-		color: #888;
+	.uploadedImage {
+		width: 120px;
+		height: 120px;
 	}
 
-	.forget-pwd {
-		float: right;
-		font-size: 12px;
-		line-height: 20px;
+	.drop-cotainer {
+		padding: 20px;
 	}
 
-	.btn-login {
-		width: 100%;
-		color: #fff;
-	    background-color: #22b4f6;
+	.btn-select-width {
+		width: 300px;
 	}
 
-	.btn-login:hover {
-		width: 100%;
-	    color: #fff;
-	    background-color: #1e9ed8
+	.inner-create-album {
+		padding: 10px;
 	}
 
-	.album-input-label {
-		float: left;
+	.padding-20 {
+		padding: 0px 20px 20px 20px;
+	}
+
+	.gray-boder {
+		color: #e0e0e0 solid 1px;
 	}
 
 	.textarea-desc {
-		border: 1px #ccc solid;
-		border-radius: 3px;
+		width: 100%;
+		border: #bdbdbd 1px solid;
+		height: 68px;
 	}
 
+	.margin-left-bottom-20 {
+		margin: 0 0 20px 20px;
+	}
+
+	.upload-container {
+		text-align: center;
+	}
+
+	.w60 {
+		width: 80px;
+	}
+
+	.mt {
+		margin-top: 20px;
+	}
 
 
 </style>
